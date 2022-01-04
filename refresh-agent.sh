@@ -26,15 +26,24 @@ debug_ai_replace_agent() {
 	echo "Building agent..."
 	cd $DEBUG_AIWARE_AGENT_PATH
 	# make build --> with this you can build for all supported OSs
-	make build-amd64-only
+	#make build-amd64-only
 	cd -
-	# 2. stop aiware-agent service
-	echo "Stopping aiWARE Agent in host..."
-	ssh -i $SSH_KEY_PATH $USER@$IP "sudo systemctl stop aiware-agent"
-	# 3. scp new aiware-agent
+
 	echo "Copying new agent binary..."
-	scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" $USER@$IP:aiware-agent
-	ssh -i $SSH_KEY_PATH $USER@$IP $CMD_HANDLE_OLD
+	ssh -i $SSH_KEY_PATH $USER@$IP -t "handle(){
+sudo systemctl stop aiware-agent
+cd /usr/local/bin
+if [ -L aiware-agent ]; then
+sudo rm -f aiware-agent
+else
+sudo mv aiware-agent aiware-agent.archive
+fi
+sudo ln -s /home/ubuntu/aiware-agent
+cd -
+exit
+exit
+} && handle"
+	scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" "$USER@$IP":aiware-agent
 	# 4. start aiware-agent service
 	echo "Starting aiWARE agent..."
 	ssh -i $SSH_KEY_PATH $USER@$IP "sudo systemctl start aiware-agent"
