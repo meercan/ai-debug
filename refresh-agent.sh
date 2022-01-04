@@ -10,44 +10,57 @@ STOP_CMD="sudo systemctl stop aiware-agent"
 START_CMD="sudo systemctl start aiware-agent"
 COMMAND="$STOP_CMD && $START_CMD"
 
-CMD_HANDLE_OLD="
-cd /usr/local/bin \
-if [ -L aiware-agent ]; then
-	rm -f aiware-agent
-else
-	mv aiware-agent aiware-agent.archive
-fi \
-ln -s /home/ubuntu/aiware-agent \
-cd -
-"
+info() {
+	echo "[INFO]: $1"
+}
 
-debug_ai_replace_agent() {
-	# 1. build new agent
-	echo "Building agent..."
+build_new_agent() {
+	info "Building agent..."
 	cd $DEBUG_AIWARE_AGENT_PATH
 	# make build --> with this you can build for all supported OSs
-	#make build-amd64-only
+	make build-amd64-only
 	cd -
+}
 
-	echo "Copying new agent binary..."
-	ssh -i $SSH_KEY_PATH $USER@$IP -t "handle(){
+upload_new_agent() {
+	info "Starting uploading new aiware-agent binary..."
+	scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" "$USER@$IP":aiware-agent
+}
+
+manage_remote_commands() {
+
+	info "Copying new agent binary..."
+	ssh -i $SSH_KEY_PATH $USER@$IP -t "manage_agent_swap(){
+echo '[INFO]: Stopping the current aiware-agent service...'
 sudo systemctl stop aiware-agent
 cd /usr/local/bin
 if [ -L aiware-agent ]; then
+echo '[INFO]: Removing aiware-agent...'
 sudo rm -f aiware-agent
 else
+echo '[INFO]: Archiving aiware-agent...'
 sudo mv aiware-agent aiware-agent.archive
 fi
+echo '[INFO]: Creating sym link for aiware-agent'
 sudo ln -s /home/ubuntu/aiware-agent
 cd -
+echo '[INFO]: Operation is done. Ready to receive new aiware-agent...'
+echo '[INFO]: Exiting from ssh tunnel...'
 exit
-exit
-} && handle"
-	scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" "$USER@$IP":aiware-agent
-	# 4. start aiware-agent service
-	echo "Starting aiWARE agent..."
+} && manage_agent_swap"
+}
+
+start_new_agent(){
+	info "Starting new aiWARE agent..."
 	ssh -i $SSH_KEY_PATH $USER@$IP "sudo systemctl start aiware-agent"
-	echo "Done!"
+}
+
+debug_ai_replace_agent() {
+	build_new_agent
+	manage_remote_commands
+	upload_new_agent
+	start_new_agent
+	info "Done!"
 }
 
 # some trick I got online to watch changes in a directory and run a command when change happens
