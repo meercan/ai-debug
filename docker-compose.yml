@@ -1,0 +1,9 @@
+services:
+  nginx:
+    container_name: ai-debug-nginx
+    image: nginx
+    ports:
+      - "8007:80"
+    volumes:
+      - "${DEBUG_AIWARE_SCRIPTS}:${DEBUG_AIWARE_NGINX_HTML}/hub"
+      - "${DEBUG_AIWARE_DIST}:${DEBUG_AIWARE_NGINX_HTML}/dist"
