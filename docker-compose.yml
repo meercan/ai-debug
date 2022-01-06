@@ -7,3 +7,23 @@ services:
     volumes:
       - "${DEBUG_AIWARE_SCRIPTS}:${DEBUG_AIWARE_NGINX_HTML}/hub"
       - "${DEBUG_AIWARE_DIST}:${DEBUG_AIWARE_NGINX_HTML}/dist"
+  ngrok_install_server:
+    image: shkoliar/ngrok:latest
+    container_name: ai-local-install-server
+    ports:
+      - 4551:4551
+    environment:
+      - AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+      - DOMAIN=host.docker.internal
+      - SUBDOMAIN=ai-local-install
+      - PORT=8007
+  ngrok_hub_controller:
+    image: shkoliar/ngrok:latest
+    container_name: ai-local-hub-controller
+    ports:
+      - 4552:4551
+    environment:
+      - AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+      - DOMAIN=host.docker.internal
+      - SUBDOMAIN=ai-local-hub
+      - PORT=9001

@@ -5,7 +5,7 @@ DEBUG_AIWARE_NGINX_HTML=/usr/share/nginx/html
 
 SSH_KEY_PATH=~/dev/.ege_creds/hub-aiware.pem
 USER=ubuntu
-IP="10.24.3.93"
+IP="10.24.0.144"
 STOP_CMD="sudo systemctl stop aiware-agent"
 START_CMD="sudo systemctl start aiware-agent"
 COMMAND="$STOP_CMD && $START_CMD"

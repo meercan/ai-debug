@@ -1,4 +1,6 @@
 start: 
-	@docker-compose up -d
-stop: 
+	@docker-compose up
+stop:
+	@docker-compose down
+clean: 
 	@docker-compose rm -fsv
