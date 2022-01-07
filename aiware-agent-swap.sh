@@ -32,12 +32,7 @@ build_new_agent() {
     cd -
 }
 
-upload_new_agent() {
-    info "Starting uploading new aiware-agent binary..."
-    scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" "$USER@$IP":aiware-agent
-}
-
-manage_remote_commands() {
+stop_delete-archive_old_agent() {
     
     info "Copying new agent binary..."
     ssh -i $SSH_KEY_PATH $USER@$IP -t "manage_agent_swap(){
@@ -60,14 +55,19 @@ exit
     } && manage_agent_swap"
 }
 
+upload_new_agent() {
+    info "Starting uploading new aiware-agent binary..."
+    scp -i $SSH_KEY_PATH "$DEBUG_AIWARE_DIST/aiware-agent-.-linux-amd64" "$USER@$IP":aiware-agent
+}
+
 start_new_agent(){
     info "Starting new aiWARE agent..."
     ssh -i $SSH_KEY_PATH $USER@$IP "sudo systemctl start aiware-agent"
 }
 
-debug_ai_replace_agent() {
+swap_aiware_agent() {
     build_new_agent
-    manage_remote_commands
+    stop_delete-archive_old_agent
     upload_new_agent
     start_new_agent
     info "Done!"
