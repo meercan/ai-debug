@@ -9,11 +9,11 @@ Currently, the toolkit is limited to the following features:
 - A docker compose file that will start three containers that will serve the installation files and locally running `hub-controller` server.
 
 **Structure:**
-| Container | URL | Connections | Local Resource |
-| :---------------------- | :------------------------------ | :---------------- | :---------------------------------------------- |
-| ai-local-install-server | ai-local-install.ngrok.io/hub/ | → ngrok → nginx → | installation scripts - /hub-controller/scripts/ |
-| ai-local-hub-controller | ai-local-install.ngrok.io/dist/ | → ngrok → nginx → | aiware-agent binary - /edge-agent/dist |
-| ai-debug-nginx | ai-local-hub.ngrok.io/hub/v1/ | → ngrok → | hub-controller - localhost:9001 |
+| URL | Connections | Local Resource |
+|:------------------------------ | :---------------- | :---------------------------------------------- |
+| ai-local-install.ngrok.io/hub/ | → ngrok → nginx → | installation scripts - `/hub-controller/scripts/` |
+| ai-local-install.ngrok.io/dist/ | → ngrok → nginx → | aiware-agent binary - `/edge-agent/dist` |
+|ai-local-hub.ngrok.io/hub/v1/ | → ngrok → | hub-controller - `localhost:9001` |
 
 **Usage:**
 | Available Command | Description |
