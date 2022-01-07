@@ -1,3 +1,4 @@
+version: '3'
 services:
   nginx:
     container_name: ai-debug-nginx
@@ -5,8 +6,8 @@ services:
     ports:
       - "8007:80"
     volumes:
-      - "${DEBUG_AIWARE_SCRIPTS}:${DEBUG_AIWARE_NGINX_HTML}/hub"
-      - "${DEBUG_AIWARE_DIST}:${DEBUG_AIWARE_NGINX_HTML}/dist"
+      - "./${DEBUG_AIWARE_SCRIPTS}:${DEBUG_AIWARE_NGINX_HTML}/hub"
+      - "./${DEBUG_AIWARE_DIST}:${DEBUG_AIWARE_NGINX_HTML}/dist"
   ngrok_install_server:
     image: shkoliar/ngrok:latest
     container_name: ai-local-install-server
