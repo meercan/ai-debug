@@ -28,7 +28,7 @@ build_new_agent() {
     info "Building agent..."
     cd $DEBUG_AIWARE_AGENT_PATH
     # make build --> with this you can build for all supported OSs
-    make debug-build-amd64
+    make build-amd64-debug
     cd -
 }
 
