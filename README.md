@@ -54,3 +54,5 @@ Clone this repository in the machine you are installing aiware instance and use 
 | `aiuninstall.sh` | Uninstall "everything" aiware related |
 | `prepare-linux.sh` | Prepares a new Linux machine for aiware installation |
 | `ailog.sh` | Watch aiware-agent syslogs |
+| `move-all-home.sh` | Moves all convenience scripts to the home directory for easy access |
+| `connect-psql.sh` | Connects to the postgresql on localhost:5432. Installs postgresql if not installed. |
