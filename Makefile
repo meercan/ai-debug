@@ -34,5 +34,4 @@ upload-agent:
 start-agent:
 	./system-scripts/agent-swap/start-agent.sh
 
-agent-swap: archive-old-agent upload-agent start-agent
-	@echo "Done!"
+agent-swap: build-new-agent archive-old-agent upload-agent start-agent
