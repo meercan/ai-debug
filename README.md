@@ -69,11 +69,11 @@ There are fragmets of scripts that constructs agent-swap scripts which are also 
 
 ### 3. Convenience scripts
 
-| Script              | Description                                                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `make connect`      | this will connect to the remote machine                                                                                           |
-| `make setup-remote` | this will move all convenience-scripts listed below to the remote machine's home directory and install dependencies for debugging |
-| `make clean-remote` | this will remove all convenience-scripts from the remote machine                                                                  |
+| Script              | Description                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `make connect`      | this will connect to the remote machine                                                                                      |
+| `make setup-remote` | this will move all scripts/remote listed below to the remote machine's home directory and install dependencies for debugging |
+| `make clean-remote` | this will remove all scripts/remote from the remote machine                                                                  |
 
 Following scripts can be run directly on the remote machine's root folder after running `make setup-remote`:
 
