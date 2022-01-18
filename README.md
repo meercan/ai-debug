@@ -11,8 +11,8 @@ This is a developer toolkit for the aiWARE Hub that is intended to be used by de
 ```
 NGROK_AUTH_TOKEN=# your ngrok auth token
 SSH_KEY_PATH=#ssh key for the remote machine
-USER=#remote machine user
-IP=#remote machine ip
+REMOTE_USER=#remote machine user
+REMOTE_IP=#remote machine ip
 ```
 
 ## Features:
