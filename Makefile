@@ -1,12 +1,3 @@
-include .env
-
-# Separator
-TITLE:=----------------------------------------
-
-define remote-command 
-	ssh -i $(SSH_KEY_PATH) $(REMOTE_USER)@$(REMOTE_IP) -t "$1"
-endef
-
 .PHONY: start stop clean connect setup-remote clean-remote
 
 start: 
