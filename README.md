@@ -20,6 +20,16 @@ REMOTE_IP=#remote machine ip
 ### 1. Debugging
 
 A docker compose file that will start three containers that will serve the installation files and locally running `hub-controller` server.
+**Usage:**
+
+If your are testing the installation files: 
+- Run `make start`, and
+- Do an aiware installation from your locally running Hub UI - API pair.
+
+If testing aiware-agent or related part:
+- Run `make start` to run debug tool
+- Build new aiware-agent locally
+- Do an aiware installation from your locally running Hub UI - API pair.
 
 **Structure:**
 | URL | Connections | Local Resource |
@@ -28,7 +38,6 @@ A docker compose file that will start three containers that will serve the insta
 | ai-local-install.ngrok.io/dist/ | → ngrok → nginx → | aiware-agent binary - `/edge-agent/dist` |
 |ai-local-hub.ngrok.io/hub/v1/ | → ngrok → | hub-controller - `localhost:9001` |
 
-**Usage:**
 | Available Command | Description |
 | ----------------- | ------------------------------------ |
 | `make start` | to spin up the containers. |
