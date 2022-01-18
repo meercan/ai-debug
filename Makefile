@@ -26,3 +26,8 @@ start-agent:
 	./system-scripts/agent-swap/start-agent.sh
 
 agent-swap: build-new-agent archive-old-agent upload-agent start-agent
+
+# BETA Commands
+# don't use these yet
+beta_load-hub-db:
+	./scripts/local/load-hub-db.sh
