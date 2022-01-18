@@ -4,6 +4,9 @@ This is a developer toolkit for the aiWARE Hub that is intended to be used by de
 
 [See this document](https://steel-ventures.atlassian.net/wiki/spaces/~294271644/pages/2637660501/Setup+Local+Debugging+Env+-+Improved) for more information about why and how to use this toolkit.
 
+![f7c49a5d-aa25-4c0b-b416-1ad728f507cd](https://user-images.githubusercontent.com/89795043/149984435-d7e83465-03ea-460c-802b-721b36cc20bc.png)
+
+
 ## Prerequisites
 
 - Set the empty environment variables in the `.env` file with your information
