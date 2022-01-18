@@ -4,6 +4,17 @@ This is a developer toolkit for the aiWARE Hub that is intended to be used by de
 
 [See this document](https://steel-ventures.atlassian.net/wiki/spaces/~294271644/pages/2637660501/Setup+Local+Debugging+Env+-+Improved) for more information about why and how to use this toolkit.
 
+## Prerequisites
+
+- Set the empty environment variables in the `.env` file with your information
+
+```
+NGROK_AUTH_TOKEN=# your ngrok auth token
+SSH_KEY_PATH=#ssh key for the remote machine
+USER=#remote machine user
+IP=#remote machine ip
+```
+
 ## Features:
 
 ### 1. Debugging
@@ -28,30 +39,36 @@ A docker compose file that will start three containers that will serve the insta
 
 ### 2. aiware-agent swap
 
-`aiware-agent-swap.sh` will swap the aiware-agent binary in a remote machine, like an EC2 instance running an aiWARE instance.
 If you you are exclusively testing the functionality of the aiware-agent CLI you can just use this scripts and swap the aiware-agent binary.
-**Usage:**
 
-- Set the empty environment variables in the script with your information
+| Script            | Description                                                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `make agent-swap` | This will swap compile a new aiware-agent from local files, then swap it with the aiware-agent in remote machine |
 
-```
-SSH_KEY_PATH=#ssh key for the remote machine
-USER=#remote machine user
-IP=#remote machine ip
-```
-
-- Source this script in your shell. `source aiware-agent-swap.sh`
-- Then either run `swap_aiware_agent()` function for a full swap or check out the script to see different function to use.
+There are fragmets of scripts that constructs agent-swap scripts which are also available via Makefile, if you find it useful.
+| Script | Description |
+| ----------------- | ------------------------------------ |
+| `make build-new-agent` | Build the agent from local edge-agent directory |
+| `make archive-old-agent` | Remove or archives the aiware-agent binary in remote machine |
+| `make upload-agent` | Upload locally build aiware-agent to remote machine |
+| `make start-agent` | Start the new aiware-agent in remote machine |
 
 ---
 
 ### 3. Convenience scripts
 
-Clone this repository in the machine you are installing aiware instance and use the scripts in `/convenience-scripts` directory. Available scripts are:
-| Script | Description |
-| ----------------- | ------------------------------------ |
-| `wdocker.sh` | Docker container monitor with only some info to make it fit in a terminal window |
-| `aiuninstall.sh` | Uninstall "everything" aiware related |
-| `prepare-linux.sh` | Prepares a new Linux machine for aiware installation |
-| `ailog.sh` | Watch aiware-agent syslogs |
-| `connect-psql.sh` | Connects to the postgresql on localhost:5432. Installs postgresql if not installed. |
+| Script              | Description                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `make connect`      | this will connect to the remote machine                                                                                           |
+| `make setup-remote` | this will move all convenience-scripts listed below to the remote machine's home directory and install dependencies for debugging |
+| `make clean-remote` | this will remove all convenience-scripts from the remote machine                                                                  |
+
+Following scripts can be run directly on the remote machine's root folder after running `make setup-remote`:
+
+| Script             | Description                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------- |
+| `wdocker.sh`       | Docker container monitor with only some info to make it fit in a terminal window    |
+| `aiuninstall.sh`   | Uninstall "everything" aiware related                                               |
+| `prepare-linux.sh` | Prepares a new Linux machine for aiware installation                                |
+| `ailog.sh`         | Watch aiware-agent syslogs                                                          |
+| `connect-psql.sh`  | Connects to the postgresql on localhost:5432. Installs postgresql if not installed. |
