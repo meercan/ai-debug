@@ -31,7 +31,14 @@ EOF
 AUTH_TOKEN=
 
 authenticate() {
-    AUTH_TOKEN=6380e83a-51d5-4113-9dfd-1eeb9c9bdef7
+    RES="$(curl --silent --location --request POST 'http://localhost:9001/hub/v1/admin/users/login' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "username": "eercan@veritone.com",
+    "password": "welcome2veritone"
+    }')"
+
+    AUTH_TOKEN=$(echo "${RES}" | jq -r .token)
 }
 
 # Create a small instance via hub-controller
