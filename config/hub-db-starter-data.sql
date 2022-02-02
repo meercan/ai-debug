@@ -1,13 +1,13 @@
 -- configs
 INSERT INTO hub.config
 (config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_domain', 'aiware.online', '{}'::jsonb, 1623741523, 1623741523);
+VALUES('controller', 'primary.aws.default_domain', 'dev.aiware.run', '{}'::jsonb, 1623741523, 1623741523);
 INSERT INTO hub.config
 (config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
 VALUES('controller', 'primary.aws.default_ami', 'ami-04b9e92b5572fa0d1', '{}'::jsonb, 1624435528, 1624435528);
 INSERT INTO hub.config
 (config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_hosted_zone', 'Z05964762KSHAWCVKUYOC', '{}'::jsonb, 1624446770, 1624446770);
+VALUES('controller', 'primary.aws.default_hosted_zone', 'Z06639633VOKXSJ2J49GO', '{}'::jsonb, 1624446770, 1624446770);
 INSERT INTO hub.config
 (config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
 VALUES('controller', 'aiware.channel', 'dev', '{}'::jsonb, 1624850248, 1624850248);
@@ -58,8 +58,6 @@ VALUES('7f84fe1f-1f46-4234-ba8c-7bc4fa468818'::uuid, 'Small-OnPrem(EdgeOnly)', '
 INSERT INTO hub.aiware_instance 
 (aiware_instance_id, aiware_instance_name, status, managed_by, infrastructure_type, description, aiware_version_id, aiware_instance_size, deployment_type, extend_aiware_instance_id, core_cluster_id, kvp, aws_region_id, aws_region, aws_account_number, aws_zone_id, aws_zone, aws_key, aws_secret, version_id, controller_url, controller_token, cloud_network_id, cloud_network_name, cloud_network_cidr_block, cloud_network_state, cloud_network_details, cloud_last_updated_date_time, core_api_url, core_api_token, readonly, created_date_time, modified_date_time, failure_type, failure_reason, created_by_user_id, modified_by_user_id, owner_organization_id, certificate_issued_timestamp, azure_subscription_id, azure_tenant_id, azure_client_id, azure_secret, azure_resource_group, azure_location) 
 VALUES('3304cf53-0878-42e9-bf16-afcb794fd1b7'::uuid, 'Small-OnPrem(Full)', 'active', 'self-managed', 'virtual-machine', '', 'fc647f25-f231-4ce5-9ce7-30dddf262e2c', 'small', 'full', NULL, NULL, '{}'::json, NULL, '', '', '', '', '', '', NULL, 'http://localhost:9000/edge/v1', '7a20b0e4-379d-4ff7-836d-bdfed86c05ce', '', '', '', 'pending', '{}'::json, 0, '', '', false, 1637784581, 1637784581, 'none', NULL, 'a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, NULL, '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 0, NULL, NULL, NULL, '', '', '');
-
------------------ AWS DATA -----------------
 
 -- AWS REGIONS
 INSERT INTO hub.cloud_region

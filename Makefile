@@ -29,9 +29,9 @@ agent-swap: build-new-agent archive-old-agent upload-agent start-agent
 
 # BETA Commands
 # don't use these yet
-beta_load-hub-db:
-	./scripts/local/load-hub-db.sh
-auth:
+hub-db-reset:
+	./scripts/local/hub-db-reset.sh
+hub-login:
 	./scripts/local/hub-login.sh
 create-small-onprem:
 	./scripts/local/create-small-onprem.sh
