@@ -15,9 +15,10 @@ connect:
 	./system-scripts/connect-remote.sh
 
 # agent swap
-.PHONY: build-new-agent archive-old-agent upload-agent start-agent agent-swap
-build-new-agent:
-	./system-scripts/agent-swap/build-new-agent.sh
+.PHONY: build-new-agents archive-old-agent upload-agent start-agent agent-swap
+build-new-agents:
+	./system-scripts/agent-swap/build-aiware-agent.sh
+	./system-scripts/agent-swap/build-hub-agent.sh
 archive-old-agent:
 	./system-scripts/agent-swap/archive-old-agent.sh
 upload-agent:
@@ -31,6 +32,8 @@ agent-swap: build-new-agent archive-old-agent upload-agent start-agent
 # don't use these yet
 hub-db-reset:
 	./scripts/local/hub-db-reset.sh
+hub-db-insert-data:
+	./scripts/local/insert-starter-data.sh
 hub-login:
 	./scripts/local/hub-login.sh
 create-small-onprem:
