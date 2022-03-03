@@ -16,9 +16,11 @@ connect:
 
 # agent swap
 .PHONY: build-new-agents archive-old-agent upload-agent start-agent agent-swap
-build-new-agents:
-	./system-scripts/agent-swap/build-aiware-agent.sh
+build-hub-agent:
 	./system-scripts/agent-swap/build-hub-agent.sh
+build-aiware-agent:
+	./system-scripts/agent-swap/build-aiware-agent.sh
+build-new-agents: build-hub-agent build-aiware-agent
 archive-old-agent:
 	./system-scripts/agent-swap/archive-old-agent.sh
 upload-agent:
