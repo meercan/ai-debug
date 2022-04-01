@@ -35,7 +35,7 @@ agent-swap: build-new-agent archive-old-agent upload-agent start-agent
 hub-db-reset:
 	./scripts/local/hub-db-reset.sh
 hub-db-insert-data:
-	./scripts/local/insert-starter-data.sh
+	./scripts/local/hub-db-insert-starter-data.sh
 hub-db-switch-debug-config:
 	./scripts/local/hub-db-switch-debug-config.sh
 hub-db-switch-dev-config:
