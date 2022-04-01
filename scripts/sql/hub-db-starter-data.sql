@@ -34,7 +34,7 @@ VALUES('admin', 'admin.hub.protocol', 'http', '{}'::jsonb, 1625749456, 162574945
 -- add user
 INSERT INTO hub.auth_user
 (user_id, user_name, email, internal_organization_id, display_name, status, "password", date_password_last_updated, kvp, password_reset_token, password_change_required, invite_token, user_settings, last_logged_in, expiration, modified_by_user_id, created_by_user_id, created_date_time, modified_date_time, first_name, last_name, phone_number, occupation, company, failed_login_attempt, reset_token_expiration, invite_token_expiration) 
-VALUES('a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, 'eercan@veritone.com', 'eercan@veritone.com', '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 'Ege Ercan', 'active', 'bcrypt:$2a$10$D4owcubD6nLp4swzF2BIE.X.de3hbz0yqqPFZ/LkAfHm5WzH/IBkq', 1637691990, NULL, '', false, 'd0235439-26a8-4c34-a7c1-e4f1e4cc2027', '{}'::json, 1637692003, 0, NULL, NULL, 1637691977, 1637692003, 'Ege', 'Ercan', '8572029062', NULL, 'Veritone', 0, 1637695585, 0);
+VALUES('a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, 'test@veritone.com', 'test@veritone.com', '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 'Test User', 'active', 'bcrypt:$2a$10$D4owcubD6nLp4swzF2BIE.X.de3hbz0yqqPFZ/LkAfHm5WzH/IBkq', 1637691990, NULL, '', false, 'd0235439-26a8-4c34-a7c1-e4f1e4cc2027', '{}'::json, 1637692003, 0, NULL, NULL, 1637691977, 1637692003, 'Test', 'User', '8572222222', NULL, 'Veritone', 0, 1637695585, 0);
 
 -- add organization for new user
 INSERT INTO hub.organization 
@@ -59,58 +59,60 @@ INSERT INTO hub.aiware_instance
 (aiware_instance_id, aiware_instance_name, status, managed_by, infrastructure_type, description, aiware_version_id, aiware_instance_size, deployment_type, extend_aiware_instance_id, core_cluster_id, kvp, aws_region_id, aws_region, aws_account_number, aws_zone_id, aws_zone, aws_key, aws_secret, version_id, controller_url, controller_token, cloud_network_id, cloud_network_name, cloud_network_cidr_block, cloud_network_state, cloud_network_details, cloud_last_updated_date_time, core_api_url, core_api_token, readonly, created_date_time, modified_date_time, failure_type, failure_reason, created_by_user_id, modified_by_user_id, owner_organization_id, certificate_issued_timestamp, azure_subscription_id, azure_tenant_id, azure_client_id, azure_secret, azure_resource_group, azure_location) 
 VALUES('3304cf53-0878-42e9-bf16-afcb794fd1b7'::uuid, 'Small-OnPrem(Full)', 'active', 'self-managed', 'virtual-machine', '', 'fc647f25-f231-4ce5-9ce7-30dddf262e2c', 'small', 'full', NULL, NULL, '{}'::json, NULL, '', '', '', '', '', '', NULL, 'http://localhost:9000/edge/v1', '7a20b0e4-379d-4ff7-836d-bdfed86c05ce', '', '', '', 'pending', '{}'::json, 0, '', '', false, 1637784581, 1637784581, 'none', NULL, 'a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, NULL, '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 0, NULL, NULL, NULL, '', '', '');
 
+-- Cuurently not needed, DB will be generated with this data, wil will need it back very soon though
+
 -- AWS REGIONS
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'ec2.eu-north-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'ec2.ap-south-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'ec2.eu-west-3.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'ec2.eu-west-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'ec2.eu-west-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'ec2.ap-northeast-3.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'ec2.ap-northeast-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'ec2.ap-northeast-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'ec2.sa-east-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'ec2.ca-central-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('d8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'ec2.ap-southeast-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'ec2.ap-southeast-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'ec2.eu-central-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'ec2.us-east-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'ec2.us-east-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'ec2.us-west-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
-INSERT INTO hub.cloud_region
-(region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
-VALUES('670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'ec2.us-west-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'ec2.eu-north-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'ec2.ap-south-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'ec2.eu-west-3.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'ec2.eu-west-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'ec2.eu-west-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'ec2.ap-northeast-3.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'ec2.ap-northeast-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'ec2.ap-northeast-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'ec2.sa-east-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'ec2.ca-central-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('d8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'ec2.ap-southeast-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'ec2.ap-southeast-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'ec2.eu-central-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'ec2.us-east-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'ec2.us-east-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'ec2.us-west-1.amazonaws.com', true, 1638206249, 1638206249, 'aws');
+-- INSERT INTO hub.cloud_region
+-- (region_id, region_name, endpoint, is_active, created_date_time, modified_date_time, cloud_provider)
+-- VALUES('670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'ec2.us-west-2.amazonaws.com', true, 1638206249, 1638206249, 'aws');
 
 -- AWS INSTANCE TYPES
 INSERT INTO hub.cloud_instance_type
@@ -252,262 +254,264 @@ INSERT INTO hub.cloud_instance_type
 (cloud_instance_type_id, cloud_instance_type_name, vcpus, memory_bytes, disk_bytes, root_disk_bytes, swap_disk_bytes, data_disk_bytes, has_gpu, num_gpu, is_active, details, created_date_time, modified_date_time, cloud_provider)
 VALUES('f5e3a2aa-8a67-40d0-8a67-1656de14a71e'::uuid, 'r5n.12xlarge', 48, 412316860416, 0, 0, 0, 0, false, 0, true, '"{\"AutoRecoverySupported\":true,\"BareMetal\":false,\"BurstablePerformanceSupported\":false,\"CurrentGeneration\":true,\"DedicatedHostsSupported\":true,\"EbsInfo\":{\"EbsOptimizedInfo\":{\"BaselineBandwidthInMbps\":9500,\"BaselineIops\":40000,\"BaselineThroughputInMBps\":1187.5,\"MaximumBandwidthInMbps\":9500,\"MaximumIops\":40000,\"MaximumThroughputInMBps\":1187.5},\"EbsOptimizedSupport\":\"default\",\"EncryptionSupport\":\"supported\",\"NvmeSupport\":\"required\"},\"FpgaInfo\":null,\"FreeTierEligible\":false,\"GpuInfo\":null,\"HibernationSupported\":false,\"Hypervisor\":\"nitro\",\"InferenceAcceleratorInfo\":null,\"InstanceStorageInfo\":null,\"InstanceStorageSupported\":false,\"InstanceType\":\"r5n.12xlarge\",\"MemoryInfo\":{\"SizeInMiB\":393216},\"NetworkInfo\":{\"DefaultNetworkCardIndex\":0,\"EfaInfo\":null,\"EfaSupported\":false,\"EnaSupport\":\"required\",\"Ipv4AddressesPerInterface\":30,\"Ipv6AddressesPerInterface\":30,\"Ipv6Supported\":true,\"MaximumNetworkCards\":1,\"MaximumNetworkInterfaces\":8,\"NetworkCards\":[{\"MaximumNetworkInterfaces\":8,\"NetworkCardIndex\":0,\"NetworkPerformance\":\"50 Gigabit\"}],\"NetworkPerformance\":\"50 Gigabit\"},\"PlacementGroupInfo\":{\"SupportedStrategies\":[\"cluster\",\"partition\",\"spread\"]},\"ProcessorInfo\":{\"SupportedArchitectures\":[\"x86_64\"],\"SustainedClockSpeedInGhz\":3.1},\"SupportedBootModes\":[\"legacy-bios\",\"uefi\"],\"SupportedRootDeviceTypes\":[\"ebs\"],\"SupportedUsageClasses\":[\"on-demand\",\"spot\"],\"SupportedVirtualizationTypes\":[\"hvm\"],\"VCpuInfo\":{\"DefaultCores\":24,\"DefaultThreadsPerCore\":2,\"DefaultVCpus\":48,\"ValidCores\":[2,4,6,8,10,12,14,16,18,20,22,24],\"ValidThreadsPerCore\":[1,2]}}"'::jsonb, 1638206251, 1638206251, 'aws');
 
+-- Cuurently not needed, DB will be generated with this data, wil will need it back very soon though
+
 -- AWS AZs
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('eun1-az1', 'eu-north-1a', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az1\",\"ZoneName\":\"eu-north-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('eun1-az2', 'eu-north-1b', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az2\",\"ZoneName\":\"eu-north-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('eun1-az3', 'eu-north-1c', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az3\",\"ZoneName\":\"eu-north-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('aps1-az1', 'ap-south-1a', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az1\",\"ZoneName\":\"ap-south-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('aps1-az3', 'ap-south-1b', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az3\",\"ZoneName\":\"ap-south-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('aps1-az2', 'ap-south-1c', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az2\",\"ZoneName\":\"ap-south-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw3-az1', 'eu-west-3a', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az1\",\"ZoneName\":\"eu-west-3a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw3-az2', 'eu-west-3b', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az2\",\"ZoneName\":\"eu-west-3b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw3-az3', 'eu-west-3c', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az3\",\"ZoneName\":\"eu-west-3c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw2-az2', 'eu-west-2a', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az2\",\"ZoneName\":\"eu-west-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw2-az3', 'eu-west-2b', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az3\",\"ZoneName\":\"eu-west-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw2-az1', 'eu-west-2c', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az1\",\"ZoneName\":\"eu-west-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw2-wl1-lon-wlz1', 'eu-west-2-wl1-lon-wlz-1', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2-wl1', 'available', '"{\"GroupName\":\"eu-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2-wl1-lon-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"euw2-az3\",\"ParentZoneName\":\"eu-west-2b\",\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-wl1-lon-wlz1\",\"ZoneName\":\"eu-west-2-wl1-lon-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206254, 1638206254);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw1-az3', 'eu-west-1a', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az3\",\"ZoneName\":\"eu-west-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw1-az1', 'eu-west-1b', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az1\",\"ZoneName\":\"eu-west-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euw1-az2', 'eu-west-1c', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az2\",\"ZoneName\":\"eu-west-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne3-az3', 'ap-northeast-3a', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az3\",\"ZoneName\":\"ap-northeast-3a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne3-az1', 'ap-northeast-3b', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az1\",\"ZoneName\":\"ap-northeast-3b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne3-az2', 'ap-northeast-3c', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az2\",\"ZoneName\":\"ap-northeast-3c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne2-az1', 'ap-northeast-2a', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az1\",\"ZoneName\":\"ap-northeast-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne2-az2', 'ap-northeast-2b', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az2\",\"ZoneName\":\"ap-northeast-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne2-az4', 'ap-northeast-2d', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az4\",\"ZoneName\":\"ap-northeast-2d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne1-az1', 'ap-northeast-1c', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az1\",\"ZoneName\":\"ap-northeast-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne1-wl1-kix-wlz1', 'ap-northeast-1-wl1-kix-wlz-1', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1-wl1', 'available', '"{\"GroupName\":\"ap-northeast-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1-wl1-kix-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne1-az1\",\"ParentZoneName\":\"ap-northeast-1c\",\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-wl1-kix-wlz1\",\"ZoneName\":\"ap-northeast-1-wl1-kix-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('sae1-az1', 'sa-east-1a', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az1\",\"ZoneName\":\"sa-east-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('sae1-az3', 'sa-east-1c', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az3\",\"ZoneName\":\"sa-east-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('cac1-az2', 'ca-central-1b', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az2\",\"ZoneName\":\"ca-central-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse1-az1', 'ap-southeast-1a', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az1\",\"ZoneName\":\"ap-southeast-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse1-az3', 'ap-southeast-1c', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az3\",\"ZoneName\":\"ap-southeast-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse2-az3', 'ap-southeast-2b', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az3\",\"ZoneName\":\"ap-southeast-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euc1-az2', 'eu-central-1a', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az2\",\"ZoneName\":\"eu-central-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euc1-az1', 'eu-central-1c', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az1\",\"ZoneName\":\"eu-central-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az2', 'us-east-1b', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az2\",\"ZoneName\":\"us-east-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az6', 'us-east-1d', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az6\",\"ZoneName\":\"us-east-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az5', 'us-east-1f', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az5\",\"ZoneName\":\"us-east-1f\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-chi1-az1', 'us-east-1-chi-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-chi-1', 'available', '"{\"GroupName\":\"us-east-1-chi-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-chi-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-chi1-az1\",\"ZoneName\":\"us-east-1-chi-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-iah1-az1', 'us-east-1-iah-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-iah-1', 'available', '"{\"GroupName\":\"us-east-1-iah-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-iah-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az6\",\"ParentZoneName\":\"us-east-1d\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-iah1-az1\",\"ZoneName\":\"us-east-1-iah-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-mia1-az1', 'us-east-1-mia-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-mia-1', 'available', '"{\"GroupName\":\"us-east-1-mia-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-mia-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-mia1-az1\",\"ZoneName\":\"us-east-1-mia-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-nyc1-az1', 'us-east-1-nyc-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-nyc-1', 'available', '"{\"GroupName\":\"us-east-1-nyc-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-nyc-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-nyc1-az1\",\"ZoneName\":\"us-east-1-nyc-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne2-az3', 'ap-northeast-2c', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az3\",\"ZoneName\":\"ap-northeast-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne2-wl1-cjj-wlz1', 'ap-northeast-2-wl1-cjj-wlz-1', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2-wl1', 'available', '"{\"GroupName\":\"ap-northeast-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2-wl1-cjj-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne2-az1\",\"ParentZoneName\":\"ap-northeast-2a\",\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-wl1-cjj-wlz1\",\"ZoneName\":\"ap-northeast-2-wl1-cjj-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne1-az4', 'ap-northeast-1a', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az4\",\"ZoneName\":\"ap-northeast-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne1-az2', 'ap-northeast-1d', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az2\",\"ZoneName\":\"ap-northeast-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apne1-wl1-nrt-wlz1', 'ap-northeast-1-wl1-nrt-wlz-1', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1-wl1', 'available', '"{\"GroupName\":\"ap-northeast-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1-wl1-nrt-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne1-az4\",\"ParentZoneName\":\"ap-northeast-1a\",\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-wl1-nrt-wlz1\",\"ZoneName\":\"ap-northeast-1-wl1-nrt-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('sae1-az2', 'sa-east-1b', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az2\",\"ZoneName\":\"sa-east-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('cac1-az1', 'ca-central-1a', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az1\",\"ZoneName\":\"ca-central-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('cac1-az4', 'ca-central-1d', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az4\",\"ZoneName\":\"ca-central-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse1-az2', 'ap-southeast-1b', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az2\",\"ZoneName\":\"ap-southeast-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse2-az1', 'ap-southeast-2a', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az1\",\"ZoneName\":\"ap-southeast-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('apse2-az2', 'ap-southeast-2c', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az2\",\"ZoneName\":\"ap-southeast-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('euc1-az3', 'eu-central-1b', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az3\",\"ZoneName\":\"eu-central-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az1', 'us-east-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az1\",\"ZoneName\":\"us-east-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az4', 'us-east-1c', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az4\",\"ZoneName\":\"us-east-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-az3', 'us-east-1e', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az3\",\"ZoneName\":\"us-east-1e\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-bos1-az1', 'us-east-1-bos-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-bos-1', 'available', '"{\"GroupName\":\"us-east-1-bos-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-bos-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-bos1-az1\",\"ZoneName\":\"us-east-1-bos-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-dfw1-az1', 'us-east-1-dfw-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-dfw-1', 'available', '"{\"GroupName\":\"us-east-1-dfw-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-dfw-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-dfw1-az1\",\"ZoneName\":\"us-east-1-dfw-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-mci1-az1', 'us-east-1-mci-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-mci-1', 'available', '"{\"GroupName\":\"us-east-1-mci-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-mci-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-mci1-az1\",\"ZoneName\":\"us-east-1-mci-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-msp1-az1', 'us-east-1-msp-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-msp-1', 'available', '"{\"GroupName\":\"us-east-1-msp-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-msp-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-msp1-az1\",\"ZoneName\":\"us-east-1-msp-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-phl1-az1', 'us-east-1-phl-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-phl-1', 'available', '"{\"GroupName\":\"us-east-1-phl-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-phl-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-phl1-az1\",\"ZoneName\":\"us-east-1-phl-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-bos-wlz1', 'us-east-1-wl1-bos-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-bos-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-bos-wlz1\",\"ZoneName\":\"us-east-1-wl1-bos-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-dfw-wlz1', 'us-east-1-wl1-dfw-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-dfw-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-dfw-wlz1\",\"ZoneName\":\"us-east-1-wl1-dfw-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-mia-wlz1', 'us-east-1-wl1-mia-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-mia-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-mia-wlz1\",\"ZoneName\":\"us-east-1-wl1-mia-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-was-wlz1', 'us-east-1-wl1-was-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-was-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-was-wlz1\",\"ZoneName\":\"us-east-1-wl1-was-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use2-az2', 'us-east-2b', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az2\",\"ZoneName\":\"us-east-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw1-az3', 'us-west-1c', '5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'available', '"{\"GroupName\":\"us-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-1\",\"State\":\"available\",\"ZoneId\":\"usw1-az3\",\"ZoneName\":\"us-west-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-az1', 'us-west-2b', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az1\",\"ZoneName\":\"us-west-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-az4', 'us-west-2d', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az4\",\"ZoneName\":\"us-west-2d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-las1-az1', 'us-west-2-las-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-las-1', 'available', '"{\"GroupName\":\"us-west-2-las-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-las-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-las1-az1\",\"ZoneName\":\"us-west-2-las-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-lax1-az2', 'us-west-2-lax-1b', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-lax-1', 'available', '"{\"GroupName\":\"us-west-2-lax-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-lax-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az4\",\"ParentZoneName\":\"us-west-2d\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-lax1-az2\",\"ZoneName\":\"us-west-2-lax-1b\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-wl1-den-wlz1', 'us-west-2-wl1-den-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-den-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-den-wlz1\",\"ZoneName\":\"us-west-2-wl1-den-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-wl1-phx-wlz1', 'us-west-2-wl1-phx-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-phx-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-phx-wlz1\",\"ZoneName\":\"us-west-2-wl1-phx-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-wl1-sfo-wlz1', 'us-west-2-wl1-sfo-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-sfo-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-sfo-wlz1\",\"ZoneName\":\"us-west-2-wl1-sfo-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-atl-wlz1', 'us-east-1-wl1-atl-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-atl-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-atl-wlz1\",\"ZoneName\":\"us-east-1-wl1-atl-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-chi-wlz1', 'us-east-1-wl1-chi-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-chi-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-chi-wlz1\",\"ZoneName\":\"us-east-1-wl1-chi-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-iah-wlz1', 'us-east-1-wl1-iah-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-iah-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-iah-wlz1\",\"ZoneName\":\"us-east-1-wl1-iah-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use1-wl1-nyc-wlz1', 'us-east-1-wl1-nyc-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-nyc-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az6\",\"ParentZoneName\":\"us-east-1d\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-nyc-wlz1\",\"ZoneName\":\"us-east-1-wl1-nyc-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use2-az1', 'us-east-2a', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az1\",\"ZoneName\":\"us-east-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('use2-az3', 'us-east-2c', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az3\",\"ZoneName\":\"us-east-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw1-az1', 'us-west-1a', '5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'available', '"{\"GroupName\":\"us-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-1\",\"State\":\"available\",\"ZoneId\":\"usw1-az1\",\"ZoneName\":\"us-west-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-az2', 'us-west-2a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az2\",\"ZoneName\":\"us-west-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-az3', 'us-west-2c', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az3\",\"ZoneName\":\"us-west-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-den1-az1', 'us-west-2-den-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-den-1', 'available', '"{\"GroupName\":\"us-west-2-den-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-den-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az4\",\"ParentZoneName\":\"us-west-2d\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-den1-az1\",\"ZoneName\":\"us-west-2-den-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-lax1-az1', 'us-west-2-lax-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-lax-1', 'available', '"{\"GroupName\":\"us-west-2-lax-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-lax-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-lax1-az1\",\"ZoneName\":\"us-west-2-lax-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-pdx1-az1', 'us-west-2-pdx-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-pdx-1', 'available', '"{\"GroupName\":\"us-west-2-pdx-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-pdx-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-pdx1-az1\",\"ZoneName\":\"us-west-2-pdx-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-wl1-las-wlz1', 'us-west-2-wl1-las-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-las-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-las-wlz1\",\"ZoneName\":\"us-west-2-wl1-las-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
-INSERT INTO hub.cloud_availability_zone
-(availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
-VALUES('usw2-wl1-sea-wlz1', 'us-west-2-wl1-sea-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-sea-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az1\",\"ParentZoneName\":\"us-west-2b\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-sea-wlz1\",\"ZoneName\":\"us-west-2-wl1-sea-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('eun1-az1', 'eu-north-1a', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az1\",\"ZoneName\":\"eu-north-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('eun1-az2', 'eu-north-1b', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az2\",\"ZoneName\":\"eu-north-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('eun1-az3', 'eu-north-1c', '14b9575e-d716-4cad-a4f2-aba266311138'::uuid, 'eu-north-1', 'available', '"{\"GroupName\":\"eu-north-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-north-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-north-1\",\"State\":\"available\",\"ZoneId\":\"eun1-az3\",\"ZoneName\":\"eu-north-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206252, 1638206252);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('aps1-az1', 'ap-south-1a', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az1\",\"ZoneName\":\"ap-south-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('aps1-az3', 'ap-south-1b', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az3\",\"ZoneName\":\"ap-south-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('aps1-az2', 'ap-south-1c', 'f1c58fb3-e9df-4215-bc80-9be18ac31c4e'::uuid, 'ap-south-1', 'available', '"{\"GroupName\":\"ap-south-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-south-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-south-1\",\"State\":\"available\",\"ZoneId\":\"aps1-az2\",\"ZoneName\":\"ap-south-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206253, 1638206253);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw3-az1', 'eu-west-3a', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az1\",\"ZoneName\":\"eu-west-3a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw3-az2', 'eu-west-3b', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az2\",\"ZoneName\":\"eu-west-3b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw3-az3', 'eu-west-3c', '8af0f552-392f-4f1e-8442-cffc1c5b7fa3'::uuid, 'eu-west-3', 'available', '"{\"GroupName\":\"eu-west-3\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-3\",\"State\":\"available\",\"ZoneId\":\"euw3-az3\",\"ZoneName\":\"eu-west-3c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw2-az2', 'eu-west-2a', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az2\",\"ZoneName\":\"eu-west-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw2-az3', 'eu-west-2b', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az3\",\"ZoneName\":\"eu-west-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw2-az1', 'eu-west-2c', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2', 'available', '"{\"GroupName\":\"eu-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-az1\",\"ZoneName\":\"eu-west-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw2-wl1-lon-wlz1', 'eu-west-2-wl1-lon-wlz-1', 'b3fdf65d-d5e2-408d-9b18-efd447739ee6'::uuid, 'eu-west-2-wl1', 'available', '"{\"GroupName\":\"eu-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-2-wl1-lon-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"euw2-az3\",\"ParentZoneName\":\"eu-west-2b\",\"RegionName\":\"eu-west-2\",\"State\":\"available\",\"ZoneId\":\"euw2-wl1-lon-wlz1\",\"ZoneName\":\"eu-west-2-wl1-lon-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206254, 1638206254);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw1-az3', 'eu-west-1a', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az3\",\"ZoneName\":\"eu-west-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw1-az1', 'eu-west-1b', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az1\",\"ZoneName\":\"eu-west-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euw1-az2', 'eu-west-1c', '941f1f8a-2aa4-4724-8401-67bcf188ff42'::uuid, 'eu-west-1', 'available', '"{\"GroupName\":\"eu-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-west-1\",\"State\":\"available\",\"ZoneId\":\"euw1-az2\",\"ZoneName\":\"eu-west-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206255, 1638206255);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne3-az3', 'ap-northeast-3a', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az3\",\"ZoneName\":\"ap-northeast-3a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne3-az1', 'ap-northeast-3b', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az1\",\"ZoneName\":\"ap-northeast-3b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne3-az2', 'ap-northeast-3c', '96d97d3e-e341-4fe3-9fcb-c49f9d8c5330'::uuid, 'ap-northeast-3', 'available', '"{\"GroupName\":\"ap-northeast-3\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-3\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-3\",\"State\":\"available\",\"ZoneId\":\"apne3-az2\",\"ZoneName\":\"ap-northeast-3c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206256, 1638206256);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne2-az1', 'ap-northeast-2a', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az1\",\"ZoneName\":\"ap-northeast-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne2-az2', 'ap-northeast-2b', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az2\",\"ZoneName\":\"ap-northeast-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne2-az4', 'ap-northeast-2d', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az4\",\"ZoneName\":\"ap-northeast-2d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne1-az1', 'ap-northeast-1c', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az1\",\"ZoneName\":\"ap-northeast-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne1-wl1-kix-wlz1', 'ap-northeast-1-wl1-kix-wlz-1', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1-wl1', 'available', '"{\"GroupName\":\"ap-northeast-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1-wl1-kix-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne1-az1\",\"ParentZoneName\":\"ap-northeast-1c\",\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-wl1-kix-wlz1\",\"ZoneName\":\"ap-northeast-1-wl1-kix-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('sae1-az1', 'sa-east-1a', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az1\",\"ZoneName\":\"sa-east-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('sae1-az3', 'sa-east-1c', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az3\",\"ZoneName\":\"sa-east-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('cac1-az2', 'ca-central-1b', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az2\",\"ZoneName\":\"ca-central-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse1-az1', 'ap-southeast-1a', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az1\",\"ZoneName\":\"ap-southeast-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse1-az3', 'ap-southeast-1c', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az3\",\"ZoneName\":\"ap-southeast-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse2-az3', 'ap-southeast-2b', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az3\",\"ZoneName\":\"ap-southeast-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euc1-az2', 'eu-central-1a', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az2\",\"ZoneName\":\"eu-central-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euc1-az1', 'eu-central-1c', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az1\",\"ZoneName\":\"eu-central-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az2', 'us-east-1b', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az2\",\"ZoneName\":\"us-east-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az6', 'us-east-1d', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az6\",\"ZoneName\":\"us-east-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az5', 'us-east-1f', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az5\",\"ZoneName\":\"us-east-1f\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-chi1-az1', 'us-east-1-chi-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-chi-1', 'available', '"{\"GroupName\":\"us-east-1-chi-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-chi-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-chi1-az1\",\"ZoneName\":\"us-east-1-chi-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-iah1-az1', 'us-east-1-iah-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-iah-1', 'available', '"{\"GroupName\":\"us-east-1-iah-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-iah-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az6\",\"ParentZoneName\":\"us-east-1d\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-iah1-az1\",\"ZoneName\":\"us-east-1-iah-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-mia1-az1', 'us-east-1-mia-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-mia-1', 'available', '"{\"GroupName\":\"us-east-1-mia-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-mia-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-mia1-az1\",\"ZoneName\":\"us-east-1-mia-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-nyc1-az1', 'us-east-1-nyc-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-nyc-1', 'available', '"{\"GroupName\":\"us-east-1-nyc-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-nyc-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-nyc1-az1\",\"ZoneName\":\"us-east-1-nyc-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne2-az3', 'ap-northeast-2c', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2', 'available', '"{\"GroupName\":\"ap-northeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-az3\",\"ZoneName\":\"ap-northeast-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne2-wl1-cjj-wlz1', 'ap-northeast-2-wl1-cjj-wlz-1', '0133caca-5920-4b90-ba5b-fd025ff36208'::uuid, 'ap-northeast-2-wl1', 'available', '"{\"GroupName\":\"ap-northeast-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-2-wl1-cjj-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne2-az1\",\"ParentZoneName\":\"ap-northeast-2a\",\"RegionName\":\"ap-northeast-2\",\"State\":\"available\",\"ZoneId\":\"apne2-wl1-cjj-wlz1\",\"ZoneName\":\"ap-northeast-2-wl1-cjj-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne1-az4', 'ap-northeast-1a', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az4\",\"ZoneName\":\"ap-northeast-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne1-az2', 'ap-northeast-1d', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1', 'available', '"{\"GroupName\":\"ap-northeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-az2\",\"ZoneName\":\"ap-northeast-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apne1-wl1-nrt-wlz1', 'ap-northeast-1-wl1-nrt-wlz-1', 'c6eea2d6-c509-4677-b53f-9d0131cfba43'::uuid, 'ap-northeast-1-wl1', 'available', '"{\"GroupName\":\"ap-northeast-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-northeast-1-wl1-nrt-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"apne1-az4\",\"ParentZoneName\":\"ap-northeast-1a\",\"RegionName\":\"ap-northeast-1\",\"State\":\"available\",\"ZoneId\":\"apne1-wl1-nrt-wlz1\",\"ZoneName\":\"ap-northeast-1-wl1-nrt-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206257, 1638206257);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('sae1-az2', 'sa-east-1b', 'bae70cd4-5f80-449f-827f-3151dfcd4a63'::uuid, 'sa-east-1', 'available', '"{\"GroupName\":\"sa-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"sa-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"sa-east-1\",\"State\":\"available\",\"ZoneId\":\"sae1-az2\",\"ZoneName\":\"sa-east-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('cac1-az1', 'ca-central-1a', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az1\",\"ZoneName\":\"ca-central-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('cac1-az4', 'ca-central-1d', '549d21c7-5c3e-482e-b385-fec3c760e220'::uuid, 'ca-central-1', 'available', '"{\"GroupName\":\"ca-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ca-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ca-central-1\",\"State\":\"available\",\"ZoneId\":\"cac1-az4\",\"ZoneName\":\"ca-central-1d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206258, 1638206258);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse1-az2', 'ap-southeast-1b', 'd8f17d07-50a8-43e8-abe5-a2160854cf4f'::uuid, 'ap-southeast-1', 'available', '"{\"GroupName\":\"ap-southeast-1\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-1\",\"State\":\"available\",\"ZoneId\":\"apse1-az2\",\"ZoneName\":\"ap-southeast-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse2-az1', 'ap-southeast-2a', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az1\",\"ZoneName\":\"ap-southeast-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('apse2-az2', 'ap-southeast-2c', '9cc9d2ff-6365-4841-9fe4-4a447c8c07d8'::uuid, 'ap-southeast-2', 'available', '"{\"GroupName\":\"ap-southeast-2\",\"Messages\":null,\"NetworkBorderGroup\":\"ap-southeast-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"ap-southeast-2\",\"State\":\"available\",\"ZoneId\":\"apse2-az2\",\"ZoneName\":\"ap-southeast-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206260, 1638206260);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('euc1-az3', 'eu-central-1b', '26c9e9ab-b3b3-474b-8afc-ce4d57806d8e'::uuid, 'eu-central-1', 'available', '"{\"GroupName\":\"eu-central-1\",\"Messages\":null,\"NetworkBorderGroup\":\"eu-central-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"eu-central-1\",\"State\":\"available\",\"ZoneId\":\"euc1-az3\",\"ZoneName\":\"eu-central-1b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az1', 'us-east-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az1\",\"ZoneName\":\"us-east-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az4', 'us-east-1c', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az4\",\"ZoneName\":\"us-east-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-az3', 'us-east-1e', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1', 'available', '"{\"GroupName\":\"us-east-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-az3\",\"ZoneName\":\"us-east-1e\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-bos1-az1', 'us-east-1-bos-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-bos-1', 'available', '"{\"GroupName\":\"us-east-1-bos-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-bos-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-bos1-az1\",\"ZoneName\":\"us-east-1-bos-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-dfw1-az1', 'us-east-1-dfw-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-dfw-1', 'available', '"{\"GroupName\":\"us-east-1-dfw-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-dfw-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-dfw1-az1\",\"ZoneName\":\"us-east-1-dfw-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-mci1-az1', 'us-east-1-mci-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-mci-1', 'available', '"{\"GroupName\":\"us-east-1-mci-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-mci-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-mci1-az1\",\"ZoneName\":\"us-east-1-mci-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-msp1-az1', 'us-east-1-msp-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-msp-1', 'available', '"{\"GroupName\":\"us-east-1-msp-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-msp-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-msp1-az1\",\"ZoneName\":\"us-east-1-msp-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-phl1-az1', 'us-east-1-phl-1a', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-phl-1', 'available', '"{\"GroupName\":\"us-east-1-phl-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-phl-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-phl1-az1\",\"ZoneName\":\"us-east-1-phl-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-bos-wlz1', 'us-east-1-wl1-bos-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-bos-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-bos-wlz1\",\"ZoneName\":\"us-east-1-wl1-bos-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-dfw-wlz1', 'us-east-1-wl1-dfw-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-dfw-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-dfw-wlz1\",\"ZoneName\":\"us-east-1-wl1-dfw-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-mia-wlz1', 'us-east-1-wl1-mia-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-mia-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-mia-wlz1\",\"ZoneName\":\"us-east-1-wl1-mia-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-was-wlz1', 'us-east-1-wl1-was-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-was-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az2\",\"ParentZoneName\":\"us-east-1b\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-was-wlz1\",\"ZoneName\":\"us-east-1-wl1-was-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use2-az2', 'us-east-2b', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az2\",\"ZoneName\":\"us-east-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw1-az3', 'us-west-1c', '5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'available', '"{\"GroupName\":\"us-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-1\",\"State\":\"available\",\"ZoneId\":\"usw1-az3\",\"ZoneName\":\"us-west-1c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-az1', 'us-west-2b', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az1\",\"ZoneName\":\"us-west-2b\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-az4', 'us-west-2d', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az4\",\"ZoneName\":\"us-west-2d\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-las1-az1', 'us-west-2-las-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-las-1', 'available', '"{\"GroupName\":\"us-west-2-las-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-las-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-las1-az1\",\"ZoneName\":\"us-west-2-las-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-lax1-az2', 'us-west-2-lax-1b', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-lax-1', 'available', '"{\"GroupName\":\"us-west-2-lax-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-lax-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az4\",\"ParentZoneName\":\"us-west-2d\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-lax1-az2\",\"ZoneName\":\"us-west-2-lax-1b\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-wl1-den-wlz1', 'us-west-2-wl1-den-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-den-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-den-wlz1\",\"ZoneName\":\"us-west-2-wl1-den-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-wl1-phx-wlz1', 'us-west-2-wl1-phx-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-phx-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-phx-wlz1\",\"ZoneName\":\"us-west-2-wl1-phx-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-wl1-sfo-wlz1', 'us-west-2-wl1-sfo-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-sfo-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-sfo-wlz1\",\"ZoneName\":\"us-west-2-wl1-sfo-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-atl-wlz1', 'us-east-1-wl1-atl-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-atl-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az1\",\"ParentZoneName\":\"us-east-1a\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-atl-wlz1\",\"ZoneName\":\"us-east-1-wl1-atl-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-chi-wlz1', 'us-east-1-wl1-chi-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-chi-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az5\",\"ParentZoneName\":\"us-east-1f\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-chi-wlz1\",\"ZoneName\":\"us-east-1-wl1-chi-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-iah-wlz1', 'us-east-1-wl1-iah-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-iah-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az4\",\"ParentZoneName\":\"us-east-1c\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-iah-wlz1\",\"ZoneName\":\"us-east-1-wl1-iah-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use1-wl1-nyc-wlz1', 'us-east-1-wl1-nyc-wlz-1', 'a6e3cd5f-4a01-4346-b023-0e936887aac6'::uuid, 'us-east-1-wl1', 'available', '"{\"GroupName\":\"us-east-1-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-1-wl1-nyc-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"use1-az6\",\"ParentZoneName\":\"us-east-1d\",\"RegionName\":\"us-east-1\",\"State\":\"available\",\"ZoneId\":\"use1-wl1-nyc-wlz1\",\"ZoneName\":\"us-east-1-wl1-nyc-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use2-az1', 'us-east-2a', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az1\",\"ZoneName\":\"us-east-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('use2-az3', 'us-east-2c', '9f252dee-c357-4975-af03-79c638b64be9'::uuid, 'us-east-2', 'available', '"{\"GroupName\":\"us-east-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-east-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-east-2\",\"State\":\"available\",\"ZoneId\":\"use2-az3\",\"ZoneName\":\"us-east-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206261, 1638206261);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw1-az1', 'us-west-1a', '5e3e3247-c59f-4246-9d0f-e27d943f6563'::uuid, 'us-west-1', 'available', '"{\"GroupName\":\"us-west-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-1\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-1\",\"State\":\"available\",\"ZoneId\":\"usw1-az1\",\"ZoneName\":\"us-west-1a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-az2', 'us-west-2a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az2\",\"ZoneName\":\"us-west-2a\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-az3', 'us-west-2c', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2', 'available', '"{\"GroupName\":\"us-west-2\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2\",\"OptInStatus\":\"opt-in-not-required\",\"ParentZoneId\":null,\"ParentZoneName\":null,\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-az3\",\"ZoneName\":\"us-west-2c\",\"ZoneType\":\"availability-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-den1-az1', 'us-west-2-den-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-den-1', 'available', '"{\"GroupName\":\"us-west-2-den-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-den-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az4\",\"ParentZoneName\":\"us-west-2d\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-den1-az1\",\"ZoneName\":\"us-west-2-den-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-lax1-az1', 'us-west-2-lax-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-lax-1', 'available', '"{\"GroupName\":\"us-west-2-lax-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-lax-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-lax1-az1\",\"ZoneName\":\"us-west-2-lax-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-pdx1-az1', 'us-west-2-pdx-1a', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-pdx-1', 'available', '"{\"GroupName\":\"us-west-2-pdx-1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-pdx-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az3\",\"ParentZoneName\":\"us-west-2c\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-pdx1-az1\",\"ZoneName\":\"us-west-2-pdx-1a\",\"ZoneType\":\"local-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-wl1-las-wlz1', 'us-west-2-wl1-las-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-las-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az2\",\"ParentZoneName\":\"us-west-2a\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-las-wlz1\",\"ZoneName\":\"us-west-2-wl1-las-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);
+-- INSERT INTO hub.cloud_availability_zone
+-- (availability_zone_id, availability_zone_name, region_id, group_name, state, details, created_date_time, modified_date_time)
+-- VALUES('usw2-wl1-sea-wlz1', 'us-west-2-wl1-sea-wlz-1', '670a7527-ed0d-4568-bc40-9f25ff6928a4'::uuid, 'us-west-2-wl1', 'available', '"{\"GroupName\":\"us-west-2-wl1\",\"Messages\":null,\"NetworkBorderGroup\":\"us-west-2-wl1-sea-wlz-1\",\"OptInStatus\":\"not-opted-in\",\"ParentZoneId\":\"usw2-az1\",\"ParentZoneName\":\"us-west-2b\",\"RegionName\":\"us-west-2\",\"State\":\"available\",\"ZoneId\":\"usw2-wl1-sea-wlz1\",\"ZoneName\":\"us-west-2-wl1-sea-wlz-1\",\"ZoneType\":\"wavelength-zone\"}"'::jsonb, 1638206262, 1638206262);

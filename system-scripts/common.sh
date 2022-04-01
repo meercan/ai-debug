@@ -11,5 +11,5 @@ verifyEnv() {
 }
 
 runRemoteCommand() {
-    ssh -i ${SSH_KEY_PATH} ${REMOTE_USER}@${REMOTE_IP} -t "${1}"
+    ssh -i "${SSH_KEY_PATH}" "${REMOTE_USER}@${REMOTE_IP}" -t "${1}"
 }
