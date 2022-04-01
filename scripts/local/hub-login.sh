@@ -3,7 +3,7 @@
 RES="$(curl --silent --location --request POST 'http://localhost:9001/hub/v1/admin/users/login' \
     --header 'Content-Type: application/json' \
     --data-raw '{
-"username": "eercan@veritone.com",
+"username": "test@veritone.com",
 "password": "welcome2veritone"
 }')"
 
