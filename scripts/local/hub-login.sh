@@ -4,7 +4,7 @@ RES="$(curl --silent --location --request POST 'http://localhost:9001/hub/v1/adm
     --header 'Content-Type: application/json' \
     --data-raw '{
 "username": "test@veritone.com",
-"password": "welcome2veritone"
+"password": "12345678"
 }')"
 
 echo "${RES}" | jq -r .token

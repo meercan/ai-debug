@@ -6,8 +6,8 @@ services:
     ports:
       - "8007:80"
     volumes:
-      - "${GOPATH}${DEBUG_AIWARE_SCRIPTS}:${DEBUG_AIWARE_NGINX_HTML}/hub"
-      - "./agent-binaries:${DEBUG_AIWARE_NGINX_HTML}/dist"
+      - "${GOPATH}${HUB_SCRIPTS_PATH}:${NGINX_HTML_DIR}/hub"
+      - "./agent-binaries:${NGINX_HTML_DIR}/dist"
   ngrok_install_server:
     image: shkoliar/ngrok:latest
     container_name: ai-local-install-server

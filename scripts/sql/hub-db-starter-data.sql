@@ -34,7 +34,7 @@ VALUES('admin', 'admin.hub.protocol', 'http', '{}'::jsonb, 1625749456, 162574945
 -- add user
 INSERT INTO hub.auth_user
 (user_id, user_name, email, internal_organization_id, display_name, status, "password", date_password_last_updated, kvp, password_reset_token, password_change_required, invite_token, user_settings, last_logged_in, expiration, modified_by_user_id, created_by_user_id, created_date_time, modified_date_time, first_name, last_name, phone_number, occupation, company, failed_login_attempt, reset_token_expiration, invite_token_expiration) 
-VALUES('a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, 'test@veritone.com', 'test@veritone.com', '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 'Test User', 'active', 'bcrypt:$2a$10$D4owcubD6nLp4swzF2BIE.X.de3hbz0yqqPFZ/LkAfHm5WzH/IBkq', 1637691990, NULL, '', false, 'd0235439-26a8-4c34-a7c1-e4f1e4cc2027', '{}'::json, 1637692003, 0, NULL, NULL, 1637691977, 1637692003, 'Test', 'User', '8572222222', NULL, 'Veritone', 0, 1637695585, 0);
+VALUES('a5c30249-6f9a-4c42-a26a-05b49309b88e'::uuid, 'test@veritone.com', 'test@veritone.com', '18934750-9631-4bd4-a566-a8e8c3f1cb28'::uuid, 'Test User', 'active', 'bcrypt:$2a$10$LBTsKgfBs98h1Kcg9r7yRetE9IGidmNrhr2mA4v9th2hkc6Rr.yVu', 1637691990, NULL, '', false, 'd0235439-26a8-4c34-a7c1-e4f1e4cc2027', '{}'::json, 1637692003, 0, NULL, NULL, 1637691977, 1637692003, 'Test', 'User', '8572222222', NULL, 'Veritone', 0, 1637695585, 0);
 
 -- add organization for new user
 INSERT INTO hub.organization 
