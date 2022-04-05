@@ -1,3 +1,5 @@
+include .env
+
 .PHONY: start stop clean
 
 start: 
@@ -51,3 +53,13 @@ hub-login:
 get-install-command:
 	@echo "This command is not ready yet."
 	./scripts/local/get-install-command.sh
+
+sql:
+# Generate the INSERT scripts for URLS
+	@sed 's/%<hub-domain>%/${HUB_SERVER_SUBDOMAIN}${SESSION_NAME}/' scripts/sql/hub-db-debug-config-urls-sql-template.txt | \
+	sed 's/%<get-aiware-domain>%/${FILE_SERVER_SUBDOMAIN}${SESSION_NAME}/' \
+	> scripts/sql/hub-db-debug-config-urls.sql
+# Place defaults to the main script file
+	@cat scripts/sql/hub-db-debug-config-defaults.sql > scripts/sql/hub-db-debug-config.sql
+# Append the INSERT scripts for URLS
+	@cat scripts/sql/hub-db-debug-config-urls.sql >> scripts/sql/hub-db-debug-config.sql
