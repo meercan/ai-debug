@@ -1,2 +1,4 @@
 aiw-debug.env
 agent-binaries
+scripts/sql/hub-db-debug-config-urls.sql
+scripts/sql/hub-db-debug-config.sql
