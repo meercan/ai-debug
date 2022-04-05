@@ -6,7 +6,7 @@ services:
     ports:
       - "8007:80"
     volumes:
-      - "${GOPATH}${HUB_SCRIPTS_PATH}:${NGINX_HTML_DIR}/hub"
+      - "${GOPATH:?go path is undefined}${HUB_SCRIPTS_PATH}:${NGINX_HTML_DIR}/hub"
       - "./agent-binaries:${NGINX_HTML_DIR}/dist"
   file-server:
     image: shkoliar/ngrok:latest
@@ -14,9 +14,9 @@ services:
     ports:
       - 4551:4551
     environment:
-      - AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+      - AUTH_TOKEN=${NGROK_AUTH_TOKEN:?ngrok auth token is undefined}
       - DOMAIN=host.docker.internal
-      - SUBDOMAIN=${FILE_SERVER_SUB_DOMAIN}${SESSION_NAME:?set session name in .env file}
+      - SUBDOMAIN=${FILE_SERVER_SUBDOMAIN}${SESSION_NAME:?set session name in .env file}
       - PORT=8007
   hub-server:
     image: shkoliar/ngrok:latest
@@ -24,7 +24,7 @@ services:
     ports:
       - 4552:4551
     environment:
-      - AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+      - AUTH_TOKEN=${NGROK_AUTH_TOKEN:?ngrok auth token is undefined}
       - DOMAIN=host.docker.internal
       - SUBDOMAIN=${HUB_SERVER_SUBDOMAIN}${SESSION_NAME:?set session name in .env file}
       - PORT=9001

@@ -1,13 +1,13 @@
-include .env
+include aiw-debug.env
 
 .PHONY: start stop clean
 
 start: 
-	@docker-compose up
+	@docker-compose --env-file aiw-debug.env up
 stop:
-	@docker-compose down
+	@docker-compose --env-file aiw-debug.env down
 clean: 
-	@docker-compose rm -fsv
+	@docker-compose --env-file aiw-debug.env rm -fsv
 
 .PHONY: connect setup-remote clean-remote
 setup-remote:
