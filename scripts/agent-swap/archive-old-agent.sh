@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./system-scripts/common.sh
+source ./scripts/common.sh
 
 echo "Copying new agent binary..."
 runRemoteCommand "manage_agent_swap(){

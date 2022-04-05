@@ -6,6 +6,20 @@ SMALL_ONPREM_REQ_BODY=
 VERSION_ID=
 SAMPLE_INSTANCE_NAME='sample-instance-create-for-debug'
 
+hubCtrlAlive() {
+    curl -s -o /dev/null http://localhost:9001/hub/v1/ping
+}
+
+checkHubCtrl() {
+    # Check if local hub-controller server is running, fail if so
+    if ! hubCtrlAlive; then
+        echo ""
+        echo "[ERROR] Hub controller is not running at http://localhost:9001 - Run you local hub-controller and try again."
+        echo ""
+        exit 1
+    fi
+}
+
 authenticate() {
     echo "...Authenticating"
     RES="$(curl --silent --location --request POST 'http://localhost:9001/hub/v1/admin/users/login' \
@@ -25,13 +39,6 @@ getVersionID() {
         --header "Authorization: Bearer ${AUTH_TOKEN}" \
         --data-raw '' | jq -r ".result[0].versionID")
 }
-
-#  getSampleInstance() {
-#     SAMPLE_INSTANCE=$(curl --silent --location --request GET 'http://localhost:9001/hub/v1/aiware_instances?aiwareInstanceName=${SAMPLE_INSTANCE_NAME}' \
-# --header 'Authorization: Bearer ${AUTH_TOKEN}')
-# echo "SAMPLE_INSTANCE : ${SAMPLE_INSTANCE}"
-#     return $?
-#  }
 
 # Create a small instance via hub-controller
 CREATE_INSTANCE_RESP=
@@ -83,6 +90,7 @@ getInstanceInstallationCommands() {
 }
 
 {
+    checkHubCtrl
     authenticate
     getVersionID
     createSmallOnPrem "$SMALL_ONPREM_REQ_BODY" && getInstanceInstallationCommands

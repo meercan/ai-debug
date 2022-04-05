@@ -1,5 +1,5 @@
 #!/bin/bash
-source .env
+source aiw-debug.env
 
 export TITLE="#---------------------# aiWARE Debug #---------------------#"
 

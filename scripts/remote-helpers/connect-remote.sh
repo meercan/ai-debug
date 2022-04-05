@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./system-scripts/common.sh
+source ./scripts/common.sh
 
 connectRemote() {
     echo "Connecting ${REMOTE_USER}@${REMOTE_IP} using ${SSH_KEY_PATH}"

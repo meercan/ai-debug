@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./system-scripts/common.sh
+source ./scripts/common.sh
 
 echo "Change directory to aiware-agent"
 cd "${GOPATH}${AIW_AGENT_PATH}" || exit 2
