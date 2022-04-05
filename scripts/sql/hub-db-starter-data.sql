@@ -1,35 +1,14 @@
--- configs
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_domain', 'dev.aiware.run', '{}'::jsonb, 1623741523, 1623741523);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_ami', 'ami-04b9e92b5572fa0d1', '{}'::jsonb, 1624435528, 1624435528);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_hosted_zone', 'Z06639633VOKXSJ2J49GO', '{}'::jsonb, 1624446770, 1624446770);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'aiware.channel', 'dev', '{}'::jsonb, 1624850248, 1624850248);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'aiware.agent_release_url', 'http://ai-local-install.ngrok.io/dist', '{}'::jsonb, 1641506206, 1641506206);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('controller', 'primary.aws.default_security_policy', 'ELBSecurityPolicy-FS-1-2-Res-2020-10', '{}'::jsonb, 1625749456, 1625749456);
-
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('admin', 'admin.aiware.get_aiware_domain', 'ai-local-install.ngrok.io/hub', '{}'::jsonb, 1640098932, 1640100785);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('admin', 'admin.aiware.get_aiware_protocol', 'http', '{}'::jsonb, 1640098932, 1640098932);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('admin', 'admin.hub.domain_name', 'ai-local-hub.ngrok.io', '{}'::jsonb, 1625749456, 1640101139);
-INSERT INTO hub.config
-(config_section, config_key, config_value, kvp, created_date_time, modified_date_time)
-VALUES('admin', 'admin.hub.protocol', 'http', '{}'::jsonb, 1625749456, 1625749456);
+-- dev configs
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'aiware.channel', 'dev', '{}'::jsonb, 1624850248, 1624850248);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'primary.aws.default_security_policy', 'ELBSecurityPolicy-FS-1-2-Res-2020-10', '{}'::jsonb, 1625749456, 1625749456);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('admin'::hub.type_config_section, 'admin.hub.domain_name', 'hub.dev.aiware.com', '{}'::jsonb, 1625749456, 1625749456);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'primary.aws.default_ami', 'ami-08853a6c93b952e8b', '{}'::jsonb, 1624435528, 1637259672);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'ssl_certificate.timeout_seconds', '200', '{}'::jsonb, 1624435528, 1639142016);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'primary.aws.ebs.delete_on_termination.db_mode.enabled', 'true', '{}'::jsonb, 1640159591, 1640159591);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('admin'::hub.type_config_section, 'admin.aws.s3.bucket_name', 'hub-7477-0162-8076', '{}'::jsonb, 1640338443, 1640338443);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('admin'::hub.type_config_section, 'admin.aws.s3.create_bucket_test', 'true', '{}'::jsonb, 1640338443, 1641463694);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'primary.aws.default_domain', 'dev.aiware.run', '{}'::jsonb, 1623741523, 1642611297);
+INSERT INTO hub.config (config_section, config_key, config_value, kvp, created_date_time, modified_date_time) VALUES('controller'::hub.type_config_section, 'primary.aws.default_hosted_zone', 'Z06639633VOKXSJ2J49GO', '{}'::jsonb, 1624446770, 1642611298);
 
 -- add user
 INSERT INTO hub.auth_user

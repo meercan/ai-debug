@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./system-scripts/common.sh
+source ./scripts/common.sh
 
 HUB_CTRL_DIR="$GOPATH$HUB_CTRL_PATH" # needs to be defined here so that GOPATH is available (can't be placed in .env)
 
